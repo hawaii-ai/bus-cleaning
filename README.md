@@ -12,7 +12,7 @@ Insert table of performance results here
 
 ## Installation and system requirements
 - Tested on Ubuntu 20.04.6 LTS
-- Python version: Kailee todo 
+- Python version: 3.9.16
 - To install dependencies, run:
 ```python3
 python setup.py install
