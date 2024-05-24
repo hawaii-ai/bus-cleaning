@@ -4,7 +4,6 @@
 import cv2
 import re
 import numpy as np
-import matplotlib.pyplot as plt
 
 from PIL import Image, ImageFont, ImageDraw, ImageFilter
 import easyocr
@@ -491,8 +490,8 @@ def text_helper(filename: str, show_thresh: bool = False):
         
         print('\nattributes array:')
         print(text_attributes)
-        print("[laterality, orientation, axilla, cmfn, clock pos, les dist, prodedural imaging flag, misc, full string]")
+        print("[laterality, orientation, cmfn, clock position, axilla flag, lesion dist measurement flag, prodecural imaging flag, misc, full string]")
         
-        Image.fromarray(im).show()
+        display(Image.fromarray(im))
     
     return bounding_box_coord, orig_text, text_attributes
