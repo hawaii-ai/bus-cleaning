@@ -1,6 +1,12 @@
 # placeholder file for all methods to do with scan cropping
 # including experimental methods 
 
+import cv2
+import re
+import numpy as np
+
+from PIL import Image, ImageFont, ImageDraw, ImageFilter
+
 def find_cropping_coordinates(image: np.ndarray) -> [int, int, int, int]:
     """
     Find cropping coordinates based on white pixels in the input scan.
