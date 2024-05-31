@@ -349,7 +349,7 @@ def check_procedural_imaging(orig_str: str, show_thresh: bool):
     return new_info
                 
 
-def get_text_attributes(text: list, show_thresh: bool = False):
+def text_helper(text: list, show_thresh: bool = False):
     """
     Gets important information from the text in the following format:
         [laterality, orientation, cmfn, clock position, axilla flag, lesion dist measurement flag, prodecural imaging flag, misc text, full scanned string]
@@ -409,8 +409,7 @@ def get_text_attributes(text: list, show_thresh: bool = False):
     return results
 
 
-# Text Helper
-def text_helper(filename: str, show_thresh: bool = False):
+def get_text_attributes(filename: str, show_thresh: bool = False):
     """
     Identifies the location of text in a scan and parses out relevant information from get_text_attributes
 
@@ -477,7 +476,7 @@ def text_helper(filename: str, show_thresh: bool = False):
             cv2.circle(im, bbox[2], 5, (255, 255, 255), 2)
             
     # Get important info from text
-    text_attributes = get_text_attributes(cleaner_text, show_thresh)
+    text_attributes = text_helper(cleaner_text, show_thresh)
         
     # Format original text
     orig_text = ' '.join(orig_text)
