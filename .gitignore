@@ -1,0 +1,10 @@
+# Ignore all dotfiles
+.*
+
+# Exceptions
+!.gitignore
+!.gitattributes
+!.gitmodules
+
+# Ignore all dot directories
+.*/
