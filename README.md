@@ -21,6 +21,6 @@ python setup.py install
 - Demo scripts are provided in the outermost folder.
 - A demo dataset is provided purely to validate code functionality, the dataset is not representative of the complete dataset used to develop or evaluate pipeline performance in the manuscript. 
 - To validate code functionality, run sample code in notebook corresponding to desired functionality (e.g. for illustrative examples of flagging and cropping procedures)
-	- Kailee todo: fill in 
-    - `.ipynb` for sample script
-    - `.py` for sample script
+    - `SampleArtifacts.ipynb` for sample notebook showing identification of invalid and B-mode scans, as well as caliper (lesion annotation) detection.  
+    - `SampleCropping.ipynb` for sample notebook showing cropping of scans to the scan area (removing background) and to remove calipers (UNTESTED).
+    - `SampleTextDetection.ipynb` for sample notebook showing identification, standardization, and classification of burnt-in sonographer text annotations. 
