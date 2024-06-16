@@ -396,3 +396,61 @@ def detect_anno(im: Image.Image, show_thresh: bool = False):
         display(Image.fromarray(rgb_image))
         
     return coord_list
+
+def detect_anno_BUSI(im: Image.Image, show_thresh: bool = False):
+    
+    coord_list = detect_anno(im, show_thresh)
+    im = np.array(im)
+
+    # if we didn't detect anything, we're going to run through an additional check 
+    if len(coord_list) < 1:
+        # additional checking step for finding the cross-style annotations which we found this failed on 
+        lines = cv2.HoughLinesP(im, rho=1, theta= np.pi / 180, threshold=50, minLineLength=50, maxLineGap=20)
+        if lines is not None:
+            lines = lines[:, 0, :] 
+
+            for line1, line2 in zip(lines, lines[1:]):
+                image_color = cv2.cvtColor(im, cv2.COLOR_GRAY2BGR)
+                x1a, y1a, x2a, y2a = line1
+                cv2.line(image_color, (x1a, y1a), (x2a, y2a), (0, 0, 255), 2)
+                x1b, y1b, x2b, y2b = line2
+                cv2.line(image_color, (x1b, y1b), (x2b, y2b), (255, 0, 0), 2)
+
+                intersection = find_intersection(line1, line2)
+                if intersection:
+                    coord_list = [min(x1a, x1b), min(y1a, y1b), max(x2b, x2a), max(y2a, y2b)]
+                    
+                if show_thresh:
+                    image_pil = Image.fromarray(cv2.cvtColor(image_color, cv2.COLOR_BGR2RGB))
+                    display(image_pil)
+
+    return coord_list
+
+def find_intersection(line1, line2):
+    """
+    Find the intersection of two lines given in the form ((x1, y1, x2, y2), (x1, y1, x2, y2)).
+    Returns the intersection point as (x, y) or None if the lines do not intersect within the line segments.
+    """
+    x1, y1, x2, y2 = line1
+    x3, y3, x4, y4 = line2
+
+    # Convert lines to vectors
+    A = np.array([[x2 - x1, x3 - x4],
+                  [y2 - y1, y3 - y4]])
+    
+    # Check if lines are parallel
+    if np.linalg.det(A) == 0:
+        return None
+
+    B = np.array([[x3 - x1],
+                  [y3 - y1]])
+
+    t, s = np.linalg.solve(A, B)
+
+    # Check if the intersection point lies on both line segments
+    if 0 <= t <= 1 and 0 <= s <= 1:
+        intersection_x = x1 + t * (x2 - x1)
+        intersection_y = y1 + t * (y2 - y1)
+        return (intersection_x, intersection_y)
+    
+    return None
