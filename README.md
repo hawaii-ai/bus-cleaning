@@ -8,7 +8,20 @@ This repository is designed to provide an open-source solution for cropping BUS 
 ![BUSClean model pipeline](images/figure-1.png)
 
 ### Results
-Insert table of performance results here 
+Performance on the internal test set for identifying each type of scan abnormality is described below. Scan shape cropping or lesion caliper location determination are not included in performance measurements due to poor definition of "best" cropping.
+|                           | Sensitivity | Specificity |
+|---------------------------|-------------|-------------|
+| Laterality (text)         | 99.2%       | 98.2%       |
+| Orientation (text)        | 97.6%       | 100%        |
+| Distance (text)           | 96.7%       | 98.7%       |
+| Position (text)           | 100%        | 100%        |
+| Axilla (text)             | 95.8%       | 100%        |
+| Lesion measurement (text) | 97.5%       | 98.3%       |
+| Procedural imaging (text) | 100%        | 100%        |
+| Enhanced scan mode        | 100%        | 99.5%       |
+| Invalid scan              | 100%        | 100%        |
+| Dual-view scan            | 100%        | 98.6%       |
+| Lesion caliper presence   | 96.7%       | 93.3%       |
 
 ## Installation and system requirements
 - Tested on Ubuntu 20.04.6 LTS
