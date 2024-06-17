@@ -5,7 +5,7 @@
 This repository is designed to provide an open-source solution for cropping BUS images for injestion into deep learning pipelines, flagging scans with abnormalities not consistently indicated in BUS DICOM metadata, and extracting knowledge about scan position and purpose from burnt-in scan annotations. 
 
 ### Pipeline Overview:
-Insert diagram showing full pipeline here
+![BUSClean model pipeline](images/figure-1.png)
 
 ### Results
 Insert table of performance results here 
