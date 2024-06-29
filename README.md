@@ -1,7 +1,7 @@
-# BUS Cleaning
+# BUSClean
 ---
-## Paper Title
-###### Github repository containing all relevant code for journal submission
+## BUSClean: Open-source software for breast ultrasound image pre-processing and knowledge extraction for medical AI
+###### Github repository containing all relevant code for submission
 This repository is designed to provide an open-source solution for cropping BUS images for injestion into deep learning pipelines, flagging scans with abnormalities not consistently indicated in BUS DICOM metadata, and extracting knowledge about scan position and purpose from burnt-in scan annotations. 
 
 ### Pipeline Overview:
